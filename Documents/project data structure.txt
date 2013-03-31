@@ -1,0 +1,23 @@
+AGrade:
+
+int id
+String name
+ArrayList scores
+int totalGrade
+
+getId
+setId
+
+setName
+getName
+
+addScore(int score) 
+getScore
+
+setTotalGrade(ArrayList weight)
+getTotalGrade
+
+
+
+
+
