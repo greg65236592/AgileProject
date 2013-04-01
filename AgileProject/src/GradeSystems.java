@@ -1,4 +1,4 @@
-/** *************************************************************************
+/***************************************************************************
 class GradeSystems儲存 a list of student grades.
  
 GradeSystems () //建構子
@@ -7,17 +7,60 @@ showRank(ID)
 updateWeights ()
 *************************************************************************** */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 
 public class GradeSystems
 {
 	float[] weights = new float[5];
-	private ArrayList<Grades> aList = new ArrayList<Grades>();
+	private LinkedList<Grades> aList;
 
 	GradeSystems()// 建構子
 	{
+		//create LinkedList 
+		aList = new LinkedList<Grades>();
+
+		
+		//input file
+		File inputFile = new File("InputFile.txt");
+		
+		//Scan the file in
+		Scanner fileScanner = null;
+		try {
+			fileScanner = new Scanner(inputFile);
+		} catch (FileNotFoundException e) {
+			System.out.println("No such file for scanning.");
+			e.printStackTrace();
+		}
+		
+		//create Grades and save them to aList
+		do{
+			String studentID = fileScanner.next();
+			String studentName = fileScanner.next();
+			if(studentName.length() == 1){	//single name error handling
+				String studentNameAppend = fileScanner.next();
+				studentName += studentNameAppend;
+			}
+			int lab1 = Integer.valueOf(fileScanner.next());
+			int lab2 = Integer.valueOf(fileScanner.next());
+			int lab3 = Integer.valueOf(fileScanner.next());
+			int midTerm = Integer.valueOf(fileScanner.next());
+			int finalExam = Integer.valueOf(fileScanner.next());
+			
+			Grades grades = new Grades(studentID, studentName, 
+					lab1, lab2, lab3, midTerm, finalExam);
+			
+			fileScanner.nextLine();
+			aList.add(grades);
+			
+		}while(fileScanner.hasNextLine());
+		
+		
 	}
 
 	private Grades getGrades(String ID)

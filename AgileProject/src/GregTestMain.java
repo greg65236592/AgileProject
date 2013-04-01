@@ -10,6 +10,7 @@ public class GregTestMain {
 	
 	public static void main(String[] args){
 		System.out.println("test123");
+		GradeSystems testGrade = new GradeSystems();
 	}
 
 }
