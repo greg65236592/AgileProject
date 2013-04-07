@@ -1,9 +1,8 @@
-/** **********************************************************************
-class Grades 儲存 ID, name, lab1, lab2, lab3, midTerm, finalExam, and totalGrade
-
-calculateTotalGrade(weights)
-Grades () { } //建構子
-************************************************************************/
+/**
+ * ********************************************************************** class Grades 儲存 ID, name, lab1, lab2, lab3, midTerm, finalExam, and totalGrade
+ * 
+ * calculateTotalGrade(weights) Grades () { } //建構子
+ ************************************************************************/
 
 public class Grades
 {
@@ -104,13 +103,13 @@ public class Grades
 	{
 		totalGrade = 0;
 
-		float lab1_weight = (float) getLab1() * weights[0];
-		float lab2_weight = (float) getLab1() * weights[1];
-		float lab3_weight = (float) getLab1() * weights[2];
-		float midTerm_weight = (float) getMidTerm() * weights[3];
-		float finalExam_weight = (float) getFinalExam() * weights[4];
+		float lab1_weight = getLab1() * weights[0];
+		float lab2_weight = getLab2() * weights[1];
+		float lab3_weight = getLab3() * weights[2];
+		float midTerm_weight = getMidTerm() * weights[3];
+		float finalExam_weight = getFinalExam() * weights[4];
 		float tempTotal = lab1_weight + lab2_weight + lab3_weight + midTerm_weight + finalExam_weight;
+
 		totalGrade = (int) Math.round(tempTotal);
 	}
 }
-

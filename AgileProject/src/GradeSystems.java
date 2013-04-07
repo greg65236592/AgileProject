@@ -5,19 +5,16 @@ GradeSystems () //建構子
 showGrade(ID)
 showRank(ID)
 updateWeights ()
-*************************************************************************** */
+ *************************************************************************** */
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-
 public class GradeSystems
 {
-	float[] weights = new float[5];
+	float weights[] = { (float) 0.1, (float) 0.1, (float) 0.1, (float) 0.3, (float) 0.4 };
 	private LinkedList<Grades> aList;
 
 	GradeSystems()// 建構子
@@ -25,24 +22,28 @@ public class GradeSystems
 		//create LinkedList 
 		aList = new LinkedList<Grades>();
 
-		
 		//input file
 		File inputFile = new File("InputFile.txt");
-		
+
 		//Scan the file in
 		Scanner fileScanner = null;
-		try {
+		try
+		{
 			fileScanner = new Scanner(inputFile);
-		} catch (FileNotFoundException e) {
+		}
+		catch (FileNotFoundException e)
+		{
 			System.out.println("No such file for scanning.");
 			e.printStackTrace();
 		}
-		
+
 		//create Grades and save them to aList
-		do{
+		do
+		{
 			String studentID = fileScanner.next();
 			String studentName = fileScanner.next();
-			if(studentName.length() == 1){	//single name error handling
+			if (studentName.length() == 1)
+			{ //single name error handling
 				String studentNameAppend = fileScanner.next();
 				studentName += studentNameAppend;
 			}
@@ -51,16 +52,19 @@ public class GradeSystems
 			int lab3 = Integer.valueOf(fileScanner.next());
 			int midTerm = Integer.valueOf(fileScanner.next());
 			int finalExam = Integer.valueOf(fileScanner.next());
-			
-			Grades grades = new Grades(studentID, studentName, 
-					lab1, lab2, lab3, midTerm, finalExam);
-			
+
+			Grades grades = new Grades(studentID, studentName, lab1, lab2, lab3, midTerm, finalExam);
+
 			fileScanner.nextLine();
 			aList.add(grades);
-			
-		}while(fileScanner.hasNextLine());
-		
-		
+
+		} while (fileScanner.hasNextLine());
+
+		//Calculate totalGrade
+		for (int i = 0; i < aList.size(); i++)
+		{
+			aList.get(i).calculateTotalGrade(weights);
+		}
 	}
 
 	private Grades getGrades(String ID)
@@ -99,6 +103,7 @@ public class GradeSystems
 		if (aGrades != null)
 		{
 			int thisTotalGrade = aGrades.getTotalGrade();
+			System.out.printf("%s:%d\n",ID,thisTotalGrade);
 
 			for (int i = 0; i < aList.size(); i++)
 			{
@@ -115,7 +120,7 @@ public class GradeSystems
 	public void updateWeights()
 	/*
 	 * 1. 顯示目前weights
-	 * 2. 輸入先的weights
+	 * 2. 輸入新的weights
 	 * 3. 若使用者確定,則重設weights與全部成績重算
 	 */
 	{
@@ -206,4 +211,3 @@ public class GradeSystems
 
 	}
 }
-
