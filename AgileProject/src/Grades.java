@@ -1,5 +1,6 @@
 /**
- * ********************************************************************** class Grades 儲存 ID, name, lab1, lab2, lab3, midTerm, finalExam, and totalGrade
+ * ********************************************************************** 
+ * class Grades 儲存 ID, name, lab1, lab2, lab3, midTerm, finalExam, and totalGrade
  * 
  * calculateTotalGrade(weights) Grades () { } //建構子
  ************************************************************************/

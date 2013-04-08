@@ -5,7 +5,7 @@ GradeSystems () //建構子
 showGrade(ID)
 showRank(ID)
 updateWeights ()
- *************************************************************************** */
+*************************************************************************** */
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -61,10 +61,7 @@ public class GradeSystems
 		} while (fileScanner.hasNextLine());
 
 		//Calculate totalGrade
-		for (int i = 0; i < aList.size(); i++)
-		{
-			aList.get(i).calculateTotalGrade(weights);
-		}
+		updataAllTotalGrade();
 	}
 
 	private Grades getGrades(String ID)
@@ -103,7 +100,7 @@ public class GradeSystems
 		if (aGrades != null)
 		{
 			int thisTotalGrade = aGrades.getTotalGrade();
-			System.out.printf("%s:%d\n",ID,thisTotalGrade);
+			System.out.printf("%s:%d\n", ID, thisTotalGrade);
 
 			for (int i = 0; i < aList.size(); i++)
 			{
@@ -132,60 +129,57 @@ public class GradeSystems
 		Scanner input = new Scanner(System.in);
 		String answer = input.nextLine();
 
-		if (answer.equals("Y"))
+		if (answer.equals("Y") || answer.equals("y") || answer.equals("Yes") || answer.equals("yes") || answer.equals("YES"))
 		{
 			setWeights(newweights);
-
-			for (int i = 0; i < aList.size(); i++)
-			{
-				aList.get(i).calculateTotalGrade(weights);
-			}
+			updataAllTotalGrade();
 		}
 	}
 
 	private void showOldWeights()
 	/*
-	 * 顯示目前 weights
+	 * 1.顯示目前 weights
 	 */
 	{
 		System.out.printf("舊配分\n");
-		System.out.printf("\tlab1\t\t%.0f%%\n, weights[0] * 100");
-		System.out.printf("\tlab2\t\t%.0f%%\n, weights[1] * 100");
-		System.out.printf("\tlab3\t\t%.0f%%\n, weights[2] * 100");
-		System.out.printf("\tmid-term\t\t%.0f%%\n, weights[3] * 100");
-		System.out.printf("\tfinal exam\t\t%.0f%%\n, weights[4] * 100");
+		System.out.printf("\tlab1\t\t%.0f%%\n", weights[0] * 100);
+		System.out.printf("\tlab2\t\t%.0f%%\n", weights[1] * 100);
+		System.out.printf("\tlab3\t\t%.0f%%\n", weights[2] * 100);
+		System.out.printf("\tmid-term\t%.0f%%\n", weights[3] * 100);
+		System.out.printf("\tfinal exam\t%.0f%%\n", weights[4] * 100);
 	}
 
 	private int[] getNewWeights()
 	/*
-	 * 設定新的Weights,暫存至tempweights
+	 * 1.設定新的Weights,暫存至tempweights並回傳
 	 */
 	{
 		int[] tempweights = new int[5];
 
 		Scanner input = new Scanner(System.in);
-		System.out.printf("輸入配分\n");
+		System.out.printf("輸入新配分\n");
 
-		System.out.printf("\tlab1\t\t\n");
+		System.out.printf("\tlab1\t\t");
 		tempweights[0] = input.nextInt();
 
-		System.out.printf("\tlab2\t\t\n");
+		System.out.printf("\tlab2\t\t");
 		tempweights[1] = input.nextInt();
 
-		System.out.printf("\tlab3\t\t\n");
+		System.out.printf("\tlab3\t\t");
 		tempweights[2] = input.nextInt();
 
-		System.out.printf("\tmid-term\t\t\n");
+		System.out.printf("\tmid-term\t");
 		tempweights[3] = input.nextInt();
 
-		System.out.printf("\tfinal exam\t\t\n");
+		System.out.printf("\tfinal exam\t");
 		tempweights[4] = input.nextInt();
 
-		System.out.printf("\tlab1\t\t%d%%\n, tempweights[0]");
-		System.out.printf("\tlab2\t\t%d%%\n, tempweights[1]");
-		System.out.printf("\tlab3\t\t%d%%\n, tempweights[2]");
-		System.out.printf("\tmid-term\t\t%d%%\n, tempweights[3]");
-		System.out.printf("\tfinal exam\t\t%d%%\n, tempweights[4]");
+		System.out.printf("請確認新配分\n");
+		System.out.printf("\tlab1\t\t%d%%\n", tempweights[0]);
+		System.out.printf("\tlab2\t\t%d%%\n", tempweights[1]);
+		System.out.printf("\tlab3\t\t%d%%\n", tempweights[2]);
+		System.out.printf("\tmid-term\t%d%%\n", tempweights[3]);
+		System.out.printf("\tfinal exam\t%d%%\n", tempweights[4]);
 
 		return tempweights;
 	}
@@ -195,11 +189,11 @@ public class GradeSystems
 	 * 1.檢查新的weights之和是否等於1.0
 	 * 2.若等於，則set 成weights
 	 * 3.否則不做動作
-	 * */
+	 */
 	{
 		if (newweights[0] + newweights[1] + newweights[2] + newweights[3] + newweights[4] != 100)
 		{
-			System.out.printf("weights 之和須等於1.0");
+			System.out.printf("輸入weights無效\nweights之和須等於1.0\n");
 		}
 		else
 		{
@@ -209,5 +203,16 @@ public class GradeSystems
 			}
 		}
 
+	}
+
+	private void updataAllTotalGrade()
+	/*
+	 * 1.重新計算全部學生TotalGrade
+	 */
+	{
+		for (int i = 0; i < aList.size(); i++)
+		{
+			aList.get(i).calculateTotalGrade(weights);
+		}
 	}
 }
