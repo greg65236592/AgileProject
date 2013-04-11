@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class GradeSystems
 {
-	float weights[] = { (float) 0.1, (float) 0.1, (float) 0.1, (float) 0.3, (float) 0.4 };
+	private float weights[] = { (float) 0.1, (float) 0.1, (float) 0.1, (float) 0.3, (float) 0.4 };
 	private LinkedList<Grades> aList;
 
 	GradeSystems()// «Øºc¤l
