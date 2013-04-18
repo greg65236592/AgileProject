@@ -82,8 +82,15 @@ public class GradeSystems
 		return aGrades;
 	}
 
-	public void showGrade(String ID)
+	public int showGrade(String ID)
+	/*
+	 * show ³o ID ªº grade
+	 */
 	{
+		int totalGrade = 0;		
+		Grades aGrades = getGrades(ID);
+		totalGrade = aGrades.getTotalGrade();
+		return totalGrade;
 	}
 
 	public int showRank(String ID)
