@@ -5,7 +5,7 @@ GradeSystems () //建構子
 showGrade(ID)
 showRank(ID)
 updateWeights ()
-*************************************************************************** */
+ *************************************************************************** */
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -64,7 +64,7 @@ public class GradeSystems
 		updataAllTotalGrade();
 	}
 
-	private Grades getGrades(String ID)
+	Grades getGrades(String ID)
 	/*
 	 * 取得這 ID 的 Grades
 	 */
@@ -87,7 +87,7 @@ public class GradeSystems
 	 * show 這 ID 的 grade
 	 */
 	{
-		int totalGrade = 0;		
+		int totalGrade = 0;
 		Grades aGrades = getGrades(ID);
 		totalGrade = aGrades.getTotalGrade();
 		return totalGrade;
