@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class testupdateWeights
+public class TestupdateWeights
 {
 	GradeSystems testGradeSystems;
 	

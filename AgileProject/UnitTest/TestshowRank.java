@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 //Test int showRank(String ID)
-public class testshowRank
+public class TestshowRank
 {
 	GradeSystems testGradeSystems;
 	
@@ -22,7 +22,7 @@ public class testshowRank
 
 	@Test
 	//Test Case 1¡Ginput¡G 955002056 expected output¡G9
-	public void test1()
+	public void testshowRank1()
 	{
 		String input = "955002056";
 		int expected = 9;
@@ -35,7 +35,7 @@ public class testshowRank
 	
 	@Test
 	//Test Case 2¡Ginput¡G 986002026 expected output¡G32
-	public void test2()
+	public void testshowRank2()
 	{
 		String input = "986002026";
 		int expected = 32;
@@ -48,7 +48,7 @@ public class testshowRank
 	
 	@Test
 	//Test Case 3¡Ginput¡G 975002070 expected output¡G1
-	public void test3()
+	public void testshowRank3()
 	{
 		String input = "975002070";
 		int expected = 1;

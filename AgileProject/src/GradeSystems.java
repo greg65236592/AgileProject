@@ -107,7 +107,6 @@ public class GradeSystems
 		if (aGrades != null)
 		{
 			int thisTotalGrade = aGrades.getTotalGrade();
-			System.out.printf("%s:%d\n", ID, thisTotalGrade);
 
 			for (int i = 0; i < aList.size(); i++)
 			{

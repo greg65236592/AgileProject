@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class testGrades
+public class TestGrades
 {
 	//weights[] = {0.1,0.1,0.1,0.3,0.4 };
 	//Test Case 1¡Ginput¡G ("955002056","³\¤åÄÉ",88,92,88,98,91) expected output¡G93
