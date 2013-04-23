@@ -44,7 +44,6 @@ public class UI
 		finally
 		{
 		} // do nothing
-
 	}
 
 	public void promptCommand() throws NoSuchCommandExceptions
