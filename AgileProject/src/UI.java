@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class UI
@@ -88,9 +89,14 @@ public class UI
 	 */
 	{
 		Boolean check = false;
-		if (aGradeSystem.getGrades(ID) != null)
+
+		LinkedList<Grades> aList = aGradeSystem.getaList();
+		for (int i = 0; i < aList.size(); i++)
 		{
-			check = true;
+			if (aList.get(i).getId().equals(ID))
+			{
+				check = true;
+			}
 		}
 		return check;
 	}

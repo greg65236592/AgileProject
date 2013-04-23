@@ -64,11 +64,12 @@ public class GradeSystems
 		updataAllTotalGrade();
 	}
 
-	Grades getGrades(String ID)
+	public int showGrade(String ID)
 	/*
-	 * 取得這 ID 的 Grades
+	 * show 這 ID 的 grade
 	 */
 	{
+		int totalGrade = 0;
 		Grades aGrades = null;
 
 		for (int i = 0; i < aList.size(); i++)
@@ -79,16 +80,6 @@ public class GradeSystems
 			}
 		}
 
-		return aGrades;
-	}
-
-	public int showGrade(String ID)
-	/*
-	 * show 這 ID 的 grade
-	 */
-	{
-		int totalGrade = 0;
-		Grades aGrades = getGrades(ID);
 		totalGrade = aGrades.getTotalGrade();
 		return totalGrade;
 	}
@@ -102,7 +93,15 @@ public class GradeSystems
 	 */
 	{
 		int rank = 1;
-		Grades aGrades = getGrades(ID);
+		Grades aGrades = null;
+
+		for (int i = 0; i < aList.size(); i++)
+		{
+			if (aList.get(i).getId().equals(ID))
+			{
+				aGrades = aList.get(i);
+			}
+		}
 
 		if (aGrades != null)
 		{
@@ -220,5 +219,10 @@ public class GradeSystems
 		{
 			aList.get(i).calculateTotalGrade(weights);
 		}
+	}
+	
+	public LinkedList<Grades> getaList()
+	{
+		return aList;
 	}
 }
