@@ -25,22 +25,22 @@ public class TestGrades
 	}
 
 	@Test
-	public void test1()
+	public void testCalculateTotal1()
 	{
 		int expected = 93;
 		int result;
-		
+
 		testGrades1.calculateTotalGrade(weights);
 		result = testGrades1.getTotalGrade();
 		assertEquals(expected, result);
 	}
 
 	@Test
-	public void test2()
+	public void testCalculateTotal2()
 	{
 		int expected = 89;
 		int result;
-		
+
 		testGrades2.calculateTotalGrade(weights);
 		result = testGrades2.getTotalGrade();
 		assertEquals(expected, result);
