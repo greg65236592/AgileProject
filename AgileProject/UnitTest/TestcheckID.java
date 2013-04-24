@@ -15,7 +15,7 @@ public class TestcheckID
 
 	@Test
 	//Test Case 1¡Ginput¡G 955002056 expected output¡Gtrue
-	public void testcheckID1()
+	public void testcheckID1() throws NoSuchIDExceptions
 	{
 		String input = "955002056";
 		Boolean expected = true;
@@ -27,11 +27,11 @@ public class TestcheckID
 	}
 	
 	@Test
-	//Test Case 2¡Ginput¡G 12345 expected output¡Gfalse
-	public void testcheckID2()
+	//Test Case 2¡Ginput¡G962001044 expected output¡Gtrue
+	public void testcheckID2() throws NoSuchIDExceptions
 	{
-		String input = "12345";
-		Boolean expected = false;
+		String input = "962001044";
+		Boolean expected = true;
 		Boolean result;
 
 		result = testUI.checkID(input);

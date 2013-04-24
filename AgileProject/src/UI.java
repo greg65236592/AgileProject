@@ -3,9 +3,10 @@ import java.util.Scanner;
 
 public class UI
 {
-	GradeSystems aGradeSystem;
+	private GradeSystems aGradeSystem;
+	private Grades aGrads;
 
-	//	public UI()
+	public UI() throws Exception
 	/*
 	 * try 
 	 * 1.call GradeSystems() to建構 aGradeSystem
@@ -33,18 +34,30 @@ public class UI
 			do
 			{
 				inputLoop1 = promptID();
+
+				if (inputLoop1.equals("Q"))
+				{
+					break;
+				}
 				checkID(inputLoop1);
+
 				showWelcomeMsg();
 
-				inputLoop2 = promptCommand();
+				promptCommand();
 
-				showFinishMsg();
+			} while (true);
 
-			} while (inputLoop1 != "Q");
+			showFinishMsg();
 		}
+
 		finally
 		{
 		} // do nothing
+	}
+
+	private void showWelcomeMsg()
+	{
+		System.out.printf("Welcome %s\n", aGrads.getName());
 	}
 
 	public void promptCommand() throws NoSuchCommandExceptions
@@ -59,6 +72,47 @@ public class UI
 	 * finally {} // do nothing
 	 */
 	{
+		try
+		{
+			do
+			{
+				System.out.printf("輸入指令\t1) G 顯示成績 (Grade)\n");
+				System.out.printf("\t2) R 顯示排名 (Rank)\n");
+				System.out.printf("\t3) W 更新配分 (Weight)\n");
+				System.out.printf("\t4) E 離開選單 (Exit) \n");
+
+				Scanner input = new Scanner(System.in);
+				String inputCommand = input.nextLine();
+
+				if (!inputCommand.equals("G") && !inputCommand.equals("R") && !inputCommand.equals("W") && !inputCommand.equals("E"))
+				{
+					throw new NoSuchCommandExceptions(inputCommand);
+				}
+
+				else if (inputCommand.equals("E"))
+				{
+					break;
+				}
+
+				else if (inputCommand.equals("G"))
+				{
+					aGradeSystem.showGrade(aGrads.getId());
+				}
+
+				else if (inputCommand.equals("R"))
+				{
+					aGradeSystem.showRank(aGrads.getId());
+				}
+
+				else if (inputCommand.equals("W"))
+				{
+					aGradeSystem.updateWeights();
+				}
+			} while (true);
+		}
+		finally
+		{
+		} // do nothing
 
 	}
 
@@ -90,15 +144,26 @@ public class UI
 	{
 		Boolean check = false;
 
-		LinkedList<Grades> aList = aGradeSystem.getaList();
-		for (int i = 0; i < aList.size(); i++)
+		try
 		{
-			if (aList.get(i).getId().equals(ID))
+			LinkedList<Grades> aList = aGradeSystem.getaList();
+			for (int i = 0; i < aList.size(); i++)
 			{
-				check = true;
+				if (aList.get(i).getId().equals(ID))
+				{
+					aGrads = aList.get(i);
+					check = true;
+				}
 			}
+			if (check == false)
+			{
+				throw new NoSuchIDExceptions(ID);
+			}
+			return check;
 		}
-		return check;
+		finally
+		{
+		} // do nothing
 	}
 
 	public void showFinishMsg()
