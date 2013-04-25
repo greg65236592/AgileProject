@@ -17,7 +17,7 @@ public class GradeSystems
 	private float weights[] = { (float) 0.1, (float) 0.1, (float) 0.1, (float) 0.3, (float) 0.4 };
 	private LinkedList<Grades> aList;
 
-	GradeSystems()// 建構子
+	GradeSystems() throws FileNotFoundException// 建構子
 	/*
 	 * public GradeSystems () //建構子
 	 *
@@ -50,6 +50,7 @@ public class GradeSystems
 		{
 			System.out.println("No such file for scanning.");
 			e.printStackTrace();
+			throw e;
 		}
 
 		//create Grades and save them to aList
@@ -84,22 +85,25 @@ public class GradeSystems
 	 * show 這 ID 的 grade
 	 */
 	{
-		Grades aGrades = null;
-
-		for (int i = 0; i < aList.size(); i++)
-		{
-			if (aList.get(i).getId().equals(ID))
+		if(ID == null){
+			System.out.printf("找不到此ID");
+		}
+		else{
+			//for each Grades in aList
+			//	if aGrades.getId() == ID
+			//		output grades
+			for (Grades aGrades : aList)
 			{
-				aGrades = aList.get(i);
+				if(aGrades.getId().equals(ID)){
+					System.out.printf("\tlab1\t\t%d\n", aGrades.getLab1());
+					System.out.printf("\tlab2\t\t%d\n", aGrades.getLab2());
+					System.out.printf("\tlab3\t\t%d\n", aGrades.getLab3());
+					System.out.printf("\tmid-term\t%d\n", aGrades.getMidTerm());
+					System.out.printf("\tfinal exam\t%d\n", aGrades.getFinalExam());
+					System.out.printf("\ttotal grade\t%d\n", aGrades.getTotalGrade());
+				}
 			}
 		}
-
-		System.out.printf("\tlab1\t\t%d%%\n", aGrades.getLab1());
-		System.out.printf("\tlab2\t\t%d%%\n", aGrades.getLab2());
-		System.out.printf("\tlab3\t\t%d%%\n", aGrades.getLab3());
-		System.out.printf("\tmid-term\t%d%%\n", aGrades.getMidTerm());
-		System.out.printf("\tfinal exam\t%d%%\n", aGrades.getFinalExam());
-		System.out.printf("\ttotal grade\t%d%%\n", aGrades.getTotalGrade());
 	}
 
 	public int showRank(String ID)
@@ -147,11 +151,10 @@ public class GradeSystems
 	 */
 	{
 		showOldWeights();
-
-		int[] newweights = getNewWeights();
+		Scanner input = new Scanner(System.in);
+		int[] newweights = getNewWeights(input);
 
 		System.out.printf("以上正確嗎? Y (Yes) 或 N (No)\n");
-		Scanner input = new Scanner(System.in);
 		String answer = input.nextLine();
 
 		if (answer.equals("Y") || answer.equals("y") || answer.equals("Yes") || answer.equals("yes") || answer.equals("YES"))
@@ -174,14 +177,13 @@ public class GradeSystems
 		System.out.printf("\tfinal exam\t%.0f%%\n", weights[4] * 100);
 	}
 
-	private int[] getNewWeights()
+	private int[] getNewWeights(Scanner input)
 	/*
 	 * 1.設定新的Weights,暫存至tempweights並回傳
 	 */
 	{
 		int[] tempweights = new int[5];
-
-		Scanner input = new Scanner(System.in);
+		
 		System.out.printf("輸入新配分\n");
 
 		System.out.printf("\tlab1\t\t");
