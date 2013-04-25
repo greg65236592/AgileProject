@@ -155,12 +155,15 @@ public class GradeSystems
 		int[] newweights = getNewWeights(input);
 
 		System.out.printf("以上正確嗎? Y (Yes) 或 N (No)\n");
-		String answer = input.nextLine();
+		String answer = input.next();
 
 		if (answer.equals("Y") || answer.equals("y") || answer.equals("Yes") || answer.equals("yes") || answer.equals("YES"))
 		{
 			setWeights(newweights);
 			updataAllTotalGrade();
+		}
+		else {
+			System.out.println("指令錯誤");
 		}
 	}
 

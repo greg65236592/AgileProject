@@ -56,6 +56,7 @@ public class UI
 	}
 
 	private void showWelcomeMsg()
+	/*show the welcome message*/
 	{
 		System.out.printf("Welcome %s\n", aGrads.getName());
 	}
