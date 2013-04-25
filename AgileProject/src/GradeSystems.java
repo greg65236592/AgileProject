@@ -18,11 +18,26 @@ public class GradeSystems
 	private LinkedList<Grades> aList;
 
 	GradeSystems()// 建構子
+	/*
+	 * public GradeSystems () //建構子
+	 *
+	 * 1. 開檔 input file 
+	 * 2. 建構an empty list of grade using Java LinkedList 叫 aList
+	 * 3. read a line
+	 * 4. while not endOfFile
+	 *   1.call Grades() 建構aGrade
+	 *   2.use Java Scanner to scan the line and put the data into aGrade
+	 *   3. aGrade.calculateTotalGrade(weights) and put aTotalGrade into aGrade
+	 *   4. 把 aGrade 存入 list
+	 *   5. if endOfLine then read next line end if
+     * end while
+     *
+	 */
 	{
 		//create LinkedList 
 		aList = new LinkedList<Grades>();
 
-		//input file
+		//new File object
 		File inputFile = new File("InputFile.txt");
 
 		//Scan the file in
