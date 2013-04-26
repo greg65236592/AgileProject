@@ -10,6 +10,27 @@ public class TestUI
 {
 
 	
+	@Test
+	//Test the correctness of output of showWelcomeMsg()
+    //testGrade = 975002021 法窻藉 81 97 90 82 84
+	//expected output = "Welcome 法窻藉\n"
+	public void testShowWelcomeMsg(){
+		String expect = "Welcome 法窻藉\n";
+		System.setIn(new ByteArrayInputStream("Q".getBytes()));
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		UI testUI = null;
+		try {
+			testUI = new UI();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Grades tsetGrade = new Grades("975002021", "法窻藉", 81, 97, 90, 82 ,84);
+		System.setOut(new PrintStream(outContent));
+		testUI.showWelcomeMsg(tsetGrade);
+		assertEquals(outContent.toString(), expect);
+		
+	}
 	
 	//promptID
 	@Test

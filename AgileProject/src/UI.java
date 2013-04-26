@@ -34,17 +34,13 @@ public class UI
 			do
 			{
 				inputLoop1 = promptID();
-
 				if (inputLoop1.equals("Q"))
 				{
 					break;
 				}
 				checkID(inputLoop1);
-
-				showWelcomeMsg();
-
+				showWelcomeMsg(aGrads);
 				promptCommand();
-
 			} while (true);
 
 			showFinishMsg();
@@ -55,7 +51,7 @@ public class UI
 		} // do nothing
 	}
 
-	private void showWelcomeMsg()
+	public void showWelcomeMsg(Grades aGrads)
 	/*show the welcome message*/
 	{
 		System.out.printf("Welcome %s\n", aGrads.getName());
