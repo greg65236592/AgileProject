@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -54,7 +56,12 @@ public class UI
 	public void showWelcomeMsg(Grades aGrads)
 	/*show the welcome message*/
 	{
-		System.out.printf("Welcome %s\n", aGrads.getName());
+		if (aGrads == null){
+			System.out.println("Grades is null!");
+		}
+		else{
+			System.out.printf("Welcome %s\n", aGrads.getName());
+		}	
 	}
 
 	public void promptCommand() throws NoSuchCommandExceptions
@@ -80,8 +87,12 @@ public class UI
 
 				Scanner input = new Scanner(System.in);
 				String inputCommand = input.nextLine();
-
-				if (!inputCommand.equals("G") && !inputCommand.equals("R") && !inputCommand.equals("W") && !inputCommand.equals("E"))
+				ArrayList<String> qualifiedStrings = new ArrayList<String>();
+				//extends new commands here (qualifiedStringsArray)
+				String[] qualifiedStringsArray = {"G", "R", "W", "E"};
+				qualifiedStrings.addAll(Arrays.asList(qualifiedStringsArray));
+				
+				if (!qualifiedStrings.contains(inputCommand))
 				{
 					throw new NoSuchCommandExceptions(inputCommand);
 				}
@@ -108,8 +119,7 @@ public class UI
 			} while (true);
 		}
 		finally
-		{
-		} // do nothing
+		{} // do nothing
 
 	}
 

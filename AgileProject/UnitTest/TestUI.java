@@ -11,10 +11,10 @@ public class TestUI
 
 	
 	@Test
-	//Test the correctness of output of showWelcomeMsg()
+	//Test the correctness of output of showWelcomeMsg() 1
     //testGrade = 975002021 法窻藉 81 97 90 82 84
 	//expected output = "Welcome 法窻藉\n"
-	public void testShowWelcomeMsg(){
+	public void testShowWelcomeMsg1(){
 		String expect = "Welcome 法窻藉\n";
 		System.setIn(new ByteArrayInputStream("Q".getBytes()));
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -28,8 +28,52 @@ public class TestUI
 		Grades tsetGrade = new Grades("975002021", "法窻藉", 81, 97, 90, 82 ,84);
 		System.setOut(new PrintStream(outContent));
 		testUI.showWelcomeMsg(tsetGrade);
-		assertEquals(outContent.toString(), expect);
+		assertEquals(outContent.toString(), expect);	
+	}
+	
+	@Test
+	//Test the correctness of output of showWelcomeMsg() 2
+    //testGrade = null
+	//expected output = "Welcome 法窻藉\n"
+	public void testShowWelcomeMsg2(){
+		String expect = "Grades is null!\r\n";
+		System.setIn(new ByteArrayInputStream("Q".getBytes()));
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		UI testUI = null;
+		try {
+			testUI = new UI();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Grades tsetGrade = null;
+		System.setOut(new PrintStream(outContent));
+		testUI.showWelcomeMsg(tsetGrade);
+		assertEquals(outContent.toString(), expect);	
+	}
+	
+	@Test
+	//Test the correctness of output of testPromptCommand1() 1
+    //testInput = ""
+	//expected throw an NoSuchCommandExceptions
+	public void testPromptCommand1(){
+		boolean isExceptionOccur = false;
+		System.setIn(new ByteArrayInputStream("Q".getBytes()));
+		UI testUI = null;
+		try {
+			testUI = new UI();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		System.setIn(new ByteArrayInputStream("A".getBytes()));
+		try {
+			testUI.promptCommand();
+		} catch (NoSuchCommandExceptions e) {
+			isExceptionOccur = true;
+		}
+		assertTrue(isExceptionOccur);	
 	}
 	
 	//promptID
