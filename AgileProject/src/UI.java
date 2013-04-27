@@ -83,7 +83,7 @@ public class UI
 				System.out.printf("輸入指令\t1) G 顯示成績 (Grade)\n");
 				System.out.printf("\t2) R 顯示排名 (Rank)\n");
 				System.out.printf("\t3) W 更新配分 (Weight)\n");
-				System.out.printf("\t4) E 離開選單 (Exit) \n");
+				System.out.printf("\t4) E 離開選單 (Exit)\n");
 
 				Scanner input = new Scanner(System.in);
 				String inputCommand = input.nextLine();
@@ -129,7 +129,7 @@ public class UI
 	 * 2.回傳使用者輸入String
 	 */
 	{
-		System.out.println("輸入ID或 Q (結束使用)？");
+		System.out.printf("輸入ID或 Q (結束使用)？\n");
 		Scanner input = new Scanner(System.in);
 		String input_string = input.nextLine();
 		return input_string;

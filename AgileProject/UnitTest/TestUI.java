@@ -4,11 +4,39 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import org.junit.Assume;
 import org.junit.Test;
 
 public class TestUI
 {
 
+	@Test
+	//Test the correctness of UI()
+	//This test case is for testing the UI() process correctness
+	//input: ID 966002031
+	//output: Welcome 陳建豪
+	//輸入指令	1) G 顯示成績 (Grade)
+	//	2) R 顯示排名 (Rank)
+	//	3) W 更新配分 (Weight)
+	//	4) E 離開選單 (Exit) 
+	public void testUI(){
+		String expect = "輸入ID或 Q (結束使用)？\n"+
+				"Welcome 陳建豪\n"+
+				"輸入指令\t1) G 顯示成績 (Grade)\n"+
+				"\t2) R 顯示排名 (Rank)\n"+
+				"\t3) W 更新配分 (Weight)\n"+
+				"\t4) E 離開選單 (Exit)\n";
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		System.setIn(new ByteArrayInputStream("966002031".getBytes()));
+		System.setOut(new PrintStream(outContent));
+		UI testUI = null;
+		try {
+			testUI = new UI();
+		} catch (Exception e) {
+			//Exclude the Exception
+		}
+		assertEquals(expect, outContent.toString());
+	}
 	
 	@Test
 	//Test the correctness of output of showWelcomeMsg() 1
@@ -54,7 +82,7 @@ public class TestUI
 	
 	@Test
 	//Test the correctness of output of testPromptCommand1() 1
-    //testInput = ""
+    //testInput = "A"
 	//expected throw an NoSuchCommandExceptions
 	public void testPromptCommand1(){
 		boolean isExceptionOccur = false;
@@ -74,6 +102,40 @@ public class TestUI
 			isExceptionOccur = true;
 		}
 		assertTrue(isExceptionOccur);	
+	}
+	
+	@Test
+	//Test the correctness of output of promptCommand() 2
+    //testInput = "E"
+	//expected show :
+	//  "輸入指令\t1) G 顯示成績 (Grade)\n"+
+	//	"\t2) R 顯示排名 (Rank)\n"+
+	//	"\t3) W 更新配分 (Weight)\n"+
+	//	"\t4) E 離開選單 (Exit) \n"
+	public void testPromptCommand2(){
+		String expect = "輸入指令\t1) G 顯示成績 (Grade)\n"+
+				"\t2) R 顯示排名 (Rank)\n"+
+				"\t3) W 更新配分 (Weight)\n"+
+				"\t4) E 離開選單 (Exit) \n";
+		System.setIn(new ByteArrayInputStream("Q".getBytes()));
+		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		UI testUI = null;
+		try {
+			testUI = new UI();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.setOut(new PrintStream(outContent));
+		System.setIn(new ByteArrayInputStream("E".getBytes()));
+		try {
+			testUI.promptCommand();
+		} catch (NoSuchCommandExceptions e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		assertEquals(expect, outContent.toString());	
 	}
 	
 	//promptID
