@@ -42,16 +42,8 @@ public class GradeSystems
 
 		//Scan the file in
 		Scanner fileScanner = null;
-		try
-		{
-			fileScanner = new Scanner(inputFile);
-		}
-		catch (FileNotFoundException e)
-		{
-			System.out.println("No such file for scanning.");
-			e.printStackTrace();
-			throw e;
-		}
+
+		fileScanner = new Scanner(inputFile);
 
 		//create Grades and save them to aList
 		do
@@ -78,6 +70,8 @@ public class GradeSystems
 
 		//Calculate totalGrade
 		updataAllTotalGrade();
+		//close scanner
+		fileScanner.close();
 	}
 
 	public void showGrade(String ID)
