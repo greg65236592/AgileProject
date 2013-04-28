@@ -3,8 +3,6 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import org.junit.Assume;
 import org.junit.Test;
 
 public class TestUI
@@ -116,7 +114,7 @@ public class TestUI
 		String expect = "輸入指令\t1) G 顯示成績 (Grade)\n"+
 				"\t2) R 顯示排名 (Rank)\n"+
 				"\t3) W 更新配分 (Weight)\n"+
-				"\t4) E 離開選單 (Exit) \n";
+				"\t4) E 離開選單 (Exit)\n";
 		System.setIn(new ByteArrayInputStream("Q".getBytes()));
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		UI testUI = null;
