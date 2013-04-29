@@ -1,3 +1,13 @@
+/** ***********************************************************************
+class UI (user interface) 
+
+checkID(ID)
+promptCommand()
+promptID()
+showFinishMsg()
+showWelcomeMsg()
+UI() «Øºc¤l «Øºc aGradeSystem
+************************************************************************ */
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayInputStream;
