@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class GradeSystem {
 	public int[] weights ={10, 10, 10, 30, 40};
 	public ArrayList<Grade> aList;
