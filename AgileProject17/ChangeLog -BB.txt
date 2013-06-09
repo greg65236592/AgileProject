@@ -1,0 +1,14 @@
+starting time 2013/06/9 19:45
+ending time 2013/06/9 20:10
+	create method in GradeSystemTest
+	testmodify()
+
+starting time 2013/06/9 19:30
+ending time 2013/06/9 19:45
+	create header and pseudo code for modify(String ID)in GradeSystem:
+
+
+starting time 2013/06/9 16:30
+ending time 2013/06/9 18:01
+	create method in GradeSystem:
+	modify(String ID)

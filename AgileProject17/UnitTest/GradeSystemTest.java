@@ -125,4 +125,32 @@ public class GradeSystemTest {
 				     "羆皌だ%计禬筁100叫穝浪琩皌だゑㄒ\r\n", outContent.toString());
 		outContent.reset();
 	}
+	
+	/** ---------------------------------------------------------------------
+	testmodify
+	aGradeSystem:
+
+	case 1:ぃタ絋皌だ 
+
+	-------------------------------------------------------------------------- */
+	@Test
+	public void testmodify() {
+		System.setIn(new ByteArrayInputStream("no yes 90 no no no".getBytes()));
+		aGradeSystem.modify("962001044");
+		assertEquals("﹙Θ罿:\r\n" +
+				"lab1:87\r\n" +
+				"lab2:86\r\n" +
+				"lab3:98\r\n" +
+				"mid-term:88\r\n" +
+				"final exam:87\r\n" +
+				"total grade:88\r\n" +
+				"э﹙Lab1だ计? (yes/no)\n" +
+				"э﹙Lab2だ计? (yes/no)\n" +
+				"块﹙Lab2穝だ计\n" +
+				"﹙穝だ计Lab2 90э\n" +
+				"э﹙Lab3だ计? (yes/no)\n" +
+				"э﹙Mid-termだ计? (yes/no)\n" +
+				"э﹙Final examだ计? (yes/no)\n", outContent.toString());
+		outContent.reset();
+	}
 }
