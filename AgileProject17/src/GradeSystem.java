@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class GradeSystem {
@@ -295,8 +296,11 @@ public class GradeSystem {
 		 * for each Grade in aList, 
 		 * 	get them out to strings
 		 * 	write them back to the file as lines
+		 *  (Iterator is for deciding whether to change line)
 		 */
+		Iterator<Grade> itr = aList.iterator();
 		for (Grade currentGrade : aList) {
+			itr.next();
 			String _id = currentGrade._ID;
 			String _name = currentGrade._name;
 			String _lab1 = String.valueOf(currentGrade._lab1);
@@ -312,7 +316,12 @@ public class GradeSystem {
 				outFile.append(_lab2 + " ");
 				outFile.append(_lab3 + " ");
 				outFile.append(_mid  + " ");
-				outFile.append(_final + "\r\n");
+				outFile.append(_final);
+				
+				if(itr.hasNext()){
+					outFile.append("\r\n");
+				}
+
 
 			} catch (IOException e) {
 				System.out.println("FileWriter append failed!");
