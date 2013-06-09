@@ -189,4 +189,77 @@ public class GradeSystem {
 		else
 			;
 	}
+	
+		public void Modify(String ID)
+	{
+		showGrade(ID);
+		Grade thisGrade = null;
+		for (Grade aGrade : aList)
+		{
+			if (aGrade._ID.equals(ID))
+			{
+				thisGrade = aGrade;
+			}
+		}
+
+		Scanner scanner = new Scanner(System.in);
+		String choose;
+		
+		// lab1
+		System.out.printf("э%sLab1だ计? (yes/no)\n", thisGrade._name);
+		choose = scanner.next();
+		if (choose.equals("yes"))
+		{
+			System.out.printf("块%sLab1穝だ计\n", thisGrade._name);
+			int tmp = scanner.nextInt();
+			thisGrade._lab1 = tmp;
+			System.out.printf("%s穝だ计Lab1%dэ\n", thisGrade._name, thisGrade._lab1);
+		}
+		
+		// lab2
+		System.out.printf("э%sLab2だ计? (yes/no)\n", thisGrade._name);
+		choose = scanner.next();
+		if (choose.equals("yes"))
+		{
+			System.out.printf("块%sLab2穝だ计\n", thisGrade._name);
+			int tmp = scanner.nextInt();
+			thisGrade._lab2 = tmp;
+			System.out.printf("%s穝だ计Lab2%dэ\n", thisGrade._name, thisGrade._lab2);
+		}
+
+		//lab3
+		System.out.printf("э%sLab3だ计? (yes/no)\n", thisGrade._name);
+		choose = scanner.next();
+		if (choose.equals("yes"))
+		{
+			System.out.printf("块%sLab3穝だ计\n", thisGrade._name);
+			int tmp = scanner.nextInt();
+			thisGrade._lab3 = tmp;
+			System.out.printf("%s穝だ计Lab3%dэ\n", thisGrade._name, thisGrade._lab3);
+		}
+		
+		//Mid-term
+		System.out.printf("э%sMid-termだ计? (yes/no)\n", thisGrade._name);
+		choose = scanner.next();
+		if (choose.equals("y"))
+		{
+			System.out.printf("块%sMid-term穝だ计\n", thisGrade._name);
+			int tmp = scanner.nextInt();
+			thisGrade._mid = tmp;
+			System.out.printf("%s穝だ计Mid-term%dэ\n", thisGrade._name, thisGrade._mid);
+		}
+		
+		//Final exam
+		System.out.printf("э%sFinal examだ计? (yes/no)\n", thisGrade._name);
+		choose = scanner.next();
+		if (choose.equals("y"))
+		{
+			System.out.printf("块%sFinal exam穝だ计\n", thisGrade._name);
+			int tmp = scanner.nextInt();
+			thisGrade._final = tmp;
+			System.out.printf("%s穝だ计Final exam%dэ\n", thisGrade._name, thisGrade._final);
+		}
+		
+		thisGrade.calculateTotalGrade(weights);
+	}
 }
