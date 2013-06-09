@@ -1,4 +1,5 @@
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -187,5 +188,39 @@ public class GradeSystem {
 			;
 		else
 			;
+	}
+	
+	public void updateFile(){
+		FileWriter outFile = null;
+		try {
+			outFile = new FileWriter("gradeList.txt");
+		} catch (IOException e) {
+			System.out.println("FileWriter failed");
+			e.printStackTrace();
+		}
+		for(Grade currentGrade : aList){
+			String _id = currentGrade._ID;
+			String _name = currentGrade._name;
+			String _lab1 = String.valueOf(currentGrade._lab1);
+			String _lab2 = String.valueOf(currentGrade._lab2);
+			String _lab3 = String.valueOf(currentGrade._lab3);
+			String _mid = String.valueOf(currentGrade._mid);
+			String _final = String.valueOf(currentGrade._final);
+			
+			try {
+				outFile.append(_id );
+				outFile.append(_name );
+				outFile.append(_lab1 );
+				outFile.append(_lab2 );
+				outFile.append(_lab3 );
+				outFile.append(_mid );
+				outFile.append(_final+"/r/n");
+			} catch (IOException e) {
+				System.out.println("FileWriter append failed!");
+				e.printStackTrace();
+			}
+			
+		}
+		
 	}
 }

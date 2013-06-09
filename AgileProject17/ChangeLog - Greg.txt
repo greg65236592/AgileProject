@@ -1,0 +1,11 @@
+starting time 2013/06/9 16:30
+ending time 2013/06/9 
+
+modify method:
+promptCommand()
+
+modify promptCommand() header and pseudo code
+unnecessary to modify test code of UI.java
+
+create method:
+updateFile()

@@ -75,8 +75,9 @@ public class UI {
 	* 不斷檢查輸入字串是否是G、R、W、E其中之一，若不是則丟出例外狀況，若是其中之一則依字母做相對應動作
 	*           G 顯示成績 (Grade) 
     *           R 顯示排名 (Rank) 
-    *           W更新配分  (Weight) 
+    *           W 更新配分  (Weight) 
     *           E 離開選單 (Exit) 
+    *           M 更改分數 (Modify)
 	*
 	* @param 
 	* @return command 用於判別是否E
@@ -90,10 +91,10 @@ public class UI {
 	/** ---------------------------------------------------------------------
 	try
 	1. prompt user for inputCommand
-	2. if inputCommand is not G (Grade),R (Rank), W (Weights), or E (Exit),
+	2. if inputCommand is not G (Grade),R (Rank), W (Weights), M (Modify), or E (Exit),
        throws NoSuchCommandException
     3. if inputCommand is E (Exit) then do nothing
-       else: G aGradeSystem.showGrade(), R showRank(), W updateWeights() end if
+       else: G aGradeSystem.showGrade(), R showRank(), W updateWeights(), M modify() end if
     end of try
 	-------------------------------------------------------------------------- */
 	public String promptCommand() throws NoSuchCommandExceptions
@@ -102,7 +103,8 @@ public class UI {
 	                     "1)G顯示成績(Grade)\r\n" +
 				         "2)R顯示排名(Rank)\r\n" + 
 	                     "3)W更新配分(Weight)\r\n" +
-				         "4)E離開選單 (Exit)\r\n" +
+	                     "4)M更改分數 (Modify)\r\n" +
+				         "5)E離開選單 (Exit)\r\n" +
 	                     "輸入指令如上\r\n" +
 				         "使用者輸入：");
 		
@@ -113,7 +115,8 @@ public class UI {
 		if(!(command.equals("G") ||
 			 command.equals("R") ||
 			 command.equals("W") ||
-			 command.equals("E")))
+			 command.equals("E") ||
+			 command.equals("M")))
 					 throw new NoSuchCommandExceptions();
 		else if(command.equals("G"))
 			aGradeSystem.showGrade(ID);
@@ -121,6 +124,8 @@ public class UI {
 			aGradeSystem.showRank(ID);
 		else if(command.equals("W"))
 			aGradeSystem.updateWeight();
+		else if(command.equals("M"))
+			aGradeSystem.modify(ID);
 		else if(command.equals("E"))
 			;
 		
