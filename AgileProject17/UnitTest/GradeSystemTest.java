@@ -134,7 +134,7 @@ public class GradeSystemTest {
 
 	-------------------------------------------------------------------------- */
 	@Test
-	public void testmodify() {
+	public void testModify() {
 		System.setIn(new ByteArrayInputStream("no yes 90 no no no".getBytes()));
 		aGradeSystem.modify("962001044");
 		assertEquals("凌宗廷成績:\r\n" +
@@ -153,4 +153,5 @@ public class GradeSystemTest {
 				"更改凌宗廷Final exam分數? (yes/no)\n", outContent.toString());
 		outContent.reset();
 	}
+	
 }

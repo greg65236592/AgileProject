@@ -261,7 +261,27 @@ public class GradeSystem {
 		thisGrade.calculateTotalGrade(weights);
 		updateFile();
 	}
-
+	
+	/*
+	 * method updateFile ----------------------------------------------
+	 * 
+	 * 
+	 * @param
+	 * 
+	 * @return File //which is for testing
+	 * 
+	 * @throws
+	 * 
+	 * Time estimate : O(n)
+	 * -------------------------------------------------------------------------
+	 */
+	/**
+	 * ---------------------------------------------------------------------
+	 * 1.New a file
+	 * 2.for each Grade in aList, get them out
+	 * 3.write each Grade into the file
+	 * ------------------------------------ --------------------------------------
+	 */
 	private void updateFile() {
 		File newFile = new File("gradeList.txt");
 		FileWriter outFile = null;
@@ -271,6 +291,11 @@ public class GradeSystem {
 			System.out.println("FileWriter failed");
 			e.printStackTrace();
 		}
+		/**
+		 * for each Grade in aList, 
+		 * 	get them out to strings
+		 * 	write them back to the file as lines
+		 */
 		for (Grade currentGrade : aList) {
 			String _id = currentGrade._ID;
 			String _name = currentGrade._name;
