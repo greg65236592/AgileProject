@@ -1,2 +1,2 @@
 # AgileProject
-The course project of Agile Method
+The course project of Agile Method in NCU
